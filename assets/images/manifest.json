@@ -1,0 +1,74 @@
+[
+  {
+    "source": "hidden-cove-hero.jpg",
+    "generated": "hidden-cove-hero-640.webp",
+    "width": 640,
+    "height": 640
+  },
+  {
+    "source": "hidden-cove-hero.jpg",
+    "generated": "hidden-cove-hero-960.webp",
+    "width": 960,
+    "height": 960
+  },
+  {
+    "source": "hidden-cove-hero.jpg",
+    "generated": "hidden-cove-hero-1280.webp",
+    "width": 1280,
+    "height": 1280
+  },
+  {
+    "source": "hidden-cove-detail.jpg",
+    "generated": "hidden-cove-detail-400.webp",
+    "width": 400,
+    "height": 400
+  },
+  {
+    "source": "hidden-cove-detail.jpg",
+    "generated": "hidden-cove-detail-640.webp",
+    "width": 640,
+    "height": 640
+  },
+  {
+    "source": "hidden-cove-detail.jpg",
+    "generated": "hidden-cove-detail-960.webp",
+    "width": 960,
+    "height": 960
+  },
+  {
+    "source": "stormy-night-hero.jpg",
+    "generated": "stormy-night-hero-640.webp",
+    "width": 640,
+    "height": 640
+  },
+  {
+    "source": "stormy-night-hero.jpg",
+    "generated": "stormy-night-hero-960.webp",
+    "width": 960,
+    "height": 960
+  },
+  {
+    "source": "stormy-night-hero.jpg",
+    "generated": "stormy-night-hero-1280.webp",
+    "width": 1280,
+    "height": 1280
+  },
+  {
+    "source": "stormy-night-detail.jpg",
+    "generated": "stormy-night-detail-400.webp",
+    "width": 400,
+    "height": 400
+  },
+  {
+    "source": "stormy-night-detail.jpg",
+    "generated": "stormy-night-detail-640.webp",
+    "width": 640,
+    "height": 640
+  },
+  {
+    "source": "stormy-night-detail.jpg",
+    "generated": "stormy-night-detail-960.webp",
+    "width": 960,
+    "height": 960
+  }
+]
