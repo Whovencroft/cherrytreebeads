@@ -70,5 +70,65 @@
     "generated": "stormy-night-detail-960.webp",
     "width": 960,
     "height": 960
+  },
+  {
+    "source": "showroom-collage.jpg",
+    "generated": "showroom-collage-480.webp",
+    "width": 480,
+    "height": 247
+  },
+  {
+    "source": "showroom-collage.jpg",
+    "generated": "showroom-collage-640.webp",
+    "width": 640,
+    "height": 329
+  },
+  {
+    "source": "showroom-collage.jpg",
+    "generated": "showroom-collage-640.webp",
+    "width": 640,
+    "height": 329
+  },
+  {
+    "source": "sea-glass-pendants.jpg",
+    "generated": "sea-glass-pendants-480.webp",
+    "width": 480,
+    "height": 421
+  },
+  {
+    "source": "sea-glass-pendants.jpg",
+    "generated": "sea-glass-pendants-797.webp",
+    "width": 797,
+    "height": 699
+  },
+  {
+    "source": "jenny-webb-collection.jpg",
+    "generated": "jenny-webb-collection-480.webp",
+    "width": 480,
+    "height": 458
+  },
+  {
+    "source": "jenny-webb-collection.jpg",
+    "generated": "jenny-webb-collection-776.webp",
+    "width": 776,
+    "height": 740
+  },
+  {
+    "source": "gemstone-bracelet.jpg",
+    "generated": "gemstone-bracelet-480.webp",
+    "width": 480,
+    "height": 480
+  },
+  {
+    "source": "gemstone-bracelet.jpg",
+    "generated": "gemstone-bracelet-960.webp",
+    "width": 960,
+    "height": 960
+  },
+  {
+    "source": "gemstone-bracelet.jpg",
+    "generated": "gemstone-bracelet-1280.webp",
+    "width": 1280,
+    "height": 1280
   }
 ]

@@ -1,4 +1,3 @@
-
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
 
@@ -8,7 +7,7 @@ if (menuToggle && siteNav) {
     menuToggle.setAttribute('aria-expanded', String(open));
   });
 
-  siteNav.querySelectorAll('a').forEach((link) => {
+  siteNav.querySelectorAll('a, button').forEach((link) => {
     link.addEventListener('click', () => {
       siteNav.classList.remove('is-open');
       menuToggle.setAttribute('aria-expanded', 'false');
@@ -16,63 +15,75 @@ if (menuToggle && siteNav) {
   });
 }
 
-const panels = Array.from(document.querySelectorAll('.panel'));
-const tabs = Array.from(document.querySelectorAll('.tab'));
-const panelLinks = Array.from(document.querySelectorAll('[data-panel-link]'));
-const hashToPanel = {
-  '#design-panel': 'design-panel',
-  '#artisan-panel': 'artisan-panel',
-  '#showroom-panel': 'showroom-panel',
-  '#wholesale-panel': 'wholesale-panel',
-  '#about-panel': 'about-panel',
-  '#contact-panel': 'contact-panel'
+const homeNavTabs = Array.from(document.querySelectorAll('[data-home-view]'));
+const homeViewPanels = Array.from(document.querySelectorAll('.view-panel[data-view]'));
+const homeHashMap = {
+  '#home': 'home',
+  '#design': 'design',
+  '#artisan': 'artisan',
+  '#showroom': 'showroom',
+  '#wholesale': 'wholesale',
+  '#about': 'about',
+  '#contact': 'contact'
 };
 
-function activatePanel(panelId, updateHash = true) {
-  if (!panels.length) return;
-  panels.forEach((panel) => {
-    const active = panel.id === panelId;
+function activateHomeView(viewName, updateHash = true, scrollToMain = true) {
+  if (!homeViewPanels.length) return;
+
+  homeViewPanels.forEach((panel) => {
+    const active = panel.dataset.view === viewName;
     panel.classList.toggle('is-active', active);
     panel.hidden = !active;
   });
 
-  tabs.forEach((tab) => {
-    const active = tab.dataset.panel === panelId;
-    tab.classList.toggle('is-active', active);
-    tab.setAttribute('aria-selected', String(active));
+  homeNavTabs.forEach((button) => {
+    const active = button.dataset.homeView === viewName;
+    button.classList.toggle('is-current', active);
+    button.setAttribute('aria-pressed', String(active));
   });
 
-    const onHomePath = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
-  if (updateHash && onHomePath) {
-    history.replaceState(null, '', `#${panelId}`);
+  if (updateHash) {
+    const nextHash = viewName === 'home' ? '#home' : `#${viewName}`;
+    history.replaceState(null, '', nextHash);
+  }
+
+  if (scrollToMain) {
+    const main = document.querySelector('#main');
+    if (main) {
+      window.scrollTo({ top: main.offsetTop - 80, behavior: 'smooth' });
+    }
   }
 }
 
-if (tabs.length) {
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      activatePanel(tab.dataset.panel);
-    });
+if (homeNavTabs.length && homeViewPanels.length) {
+  homeNavTabs.forEach((button) => {
+    button.addEventListener('click', () => activateHomeView(button.dataset.homeView, true, true));
   });
 
-  panelLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      if (document.body.dataset.page !== 'home') return;
-      const panelId = link.dataset.panelLink;
-      if (!panelId) return;
-      event.preventDefault();
-      activatePanel(panelId);
-      const target = document.querySelector('#explore-panels');
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
+  const initialView = homeHashMap[window.location.hash] || 'home';
+  activateHomeView(initialView, false, false);
 
-  const initial = hashToPanel[window.location.hash];
-  if (initial) activatePanel(initial, false);
+  window.addEventListener('hashchange', () => {
+    const viewName = homeHashMap[window.location.hash];
+    if (viewName) activateHomeView(viewName, false, false);
+  });
 }
 
+const slideshows = Array.from(document.querySelectorAll('.slideshow'));
 
-window.addEventListener('hashchange', () => {
-  const panelId = hashToPanel[window.location.hash];
-  if (panelId && panels.length) activatePanel(panelId, false);
+slideshows.forEach((slideshow) => {
+  const slides = Array.from(slideshow.querySelectorAll('img'));
+  if (slides.length < 2) return;
+
+  let index = slides.findIndex((slide) => slide.classList.contains('is-active'));
+  if (index < 0) index = 0;
+  slides[index].classList.add('is-active');
+
+  const rotateMs = Number(slideshow.dataset.rotate || 4500);
+
+  window.setInterval(() => {
+    slides[index].classList.remove('is-active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('is-active');
+  }, rotateMs);
 });
